@@ -4,7 +4,10 @@
   "description": "Child theme of the WordPress theme 「museum」",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx gulp & npx webpack",
+    "build:sass": "npx gulp",
+    "build:js": "npx webpack",
+    "watch": "npx gulp watch & npx webpack --watch"
   },
   "repository": {
     "type": "git",
