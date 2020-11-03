@@ -1,0 +1,19 @@
+{
+  "name": "museum-child",
+  "version": "1.0.0",
+  "description": "Child theme of the WordPress theme 「museum」",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazukifuji/museum-child.git"
+  },
+  "author": "kazukifuji",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/kazukifuji/museum-child/issues"
+  },
+  "homepage": "https://github.com/kazukifuji/museum-child#readme"
+}
