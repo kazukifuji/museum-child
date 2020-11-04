@@ -1,0 +1,13 @@
+//指定タイプのメディアクエリ
+@mixin media-query($breakpoint-type: tc) {
+  @media #{map-get($breakpoint, $breakpoint-type)} {
+    @content;
+  }
+}
+
+//指定タイプ未満のメディアクエリ
+@mixin media-query-below($breakpoint-type: tc) {
+  @media #{map-get($breakpoint-below, $breakpoint-type)} {
+    @content;
+  }
+}  
