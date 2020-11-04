@@ -21,6 +21,9 @@
     <div class="content">
 
       <div class="content__bg">
+        <div id="backgroundCanvasWrap" class="content__bg-canvas-wrap">
+          <canvas id="backgroundCanvas" class="content__bg-canvas"></canvas>
+        </div>
       </div><!--.content__bg-->
 
       <div class="content__fg">
