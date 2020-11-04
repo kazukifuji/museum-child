@@ -1,0 +1,23 @@
+.content {
+  &__bg {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+
+    &-canvas-wrap {
+      height: 160px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateX(-50px) rotate(-15deg);
+      width: calc( 100% + 100px );
+
+      @include media-query(pc) {
+        margin-left: $sidebar-width;
+      }
+    }
+  }
+} 
