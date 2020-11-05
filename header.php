@@ -8,6 +8,17 @@
   <body <?php body_class( 'body' ); ?>>
     <?php wp_body_open(); ?>
 
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loading-screen__inner">
+        <div class="loader-ellips">
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+          <span class="loader-ellips__dot"></span>
+        </div>
+      </div>
+    </div><!--.loading-screen-->
+
     <header id="header" class="header">
       <h4 class="header__logo">
         <?php get_template_part( 'template_parts/logo' ); ?>
