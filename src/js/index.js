@@ -1,5 +1,9 @@
+import loadingScreen from './features/loadingScreen';
 import backgroundAnimation from './features/backgroundAnimation/main';
 import heroHeaderSlider from './features/heroHeaderSlider';
+
+//ローディング画面の初期設定
+loadingScreen.init();
 
 //IE判定
 if (!document.documentMode && !document.uniqueID) {
@@ -16,4 +20,7 @@ window.addEventListener( 'load', () => {
     //ヒーローヘッダーのスライダーの自動再生を開始
     heroHeaderSlider.play();
   }
+
+  //ローディング画面を閉じる
+  loadingScreen.close();
 }, { once: true } );
