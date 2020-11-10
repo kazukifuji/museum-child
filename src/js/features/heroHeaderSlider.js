@@ -50,6 +50,12 @@ export default {
       simulateTouch : false,
       speed: 2000,
     } );
+
+    //スライダーが1つ以下の場合、ページネーションを非表示
+    if ( this.swiper.slides.length <= 1 ) {
+      this.swiper.pagination.destroy();
+      this.element.querySelector('.swiper-pagination').style.display = 'none';
+    }
   },
 
   //スライダーの自動再生を開始
