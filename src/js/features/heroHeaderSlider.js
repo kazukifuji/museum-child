@@ -5,10 +5,10 @@ import 'swiper/swiper-bundle.css';
 export default {
   //初期設定
   init: function() {
-    this.parentElem = document.getElementById('heroHeader');
-    if ( !this.parentElem ) return;
+    this.element = document.querySelector('#heroHeader .swiper-container');
+    if ( !this.element ) return;
 
-    this.swiper = new Swiper( this.parentElem.querySelector('.swiper-container'), {
+    this.swiper = new Swiper( this.element, {
       autoplay: {
         delay: 8000,
         disableOnInteraction: false,
@@ -54,7 +54,7 @@ export default {
 
   //スライダーの自動再生を開始
   play: function() {
-    if ( !this.parentElem ) return;
+    if ( !this.element ) return;
     this.swiper.autoplay.start();
     this.swiper.slides[0].style.animation = 'zoom-out 10s cubic-bezier(0.5, 1, 0.89, 1) both';
   },
