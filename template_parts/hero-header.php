@@ -4,20 +4,29 @@
 
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <?php
-          $header_images = get_uploaded_header_images();
-          if ( get_theme_mod( 'header_image', '' ) === 'random-uploaded-image' ) shuffle( $header_images ); ?>
+        <?php $header_images = get_uploaded_header_images(); ?>
 
-        <?php foreach ( $header_images as $image ) : ?>
+        <?php if ( $header_images ) : ?>
+          <?php if ( get_theme_mod( 'header_image', '' ) === 'random-uploaded-image' ) shuffle( $header_images );
+          foreach ( $header_images as $image ) : ?>
+            <div class="swiper-slide">
+              <img
+                src="<?php echo esc_url( $image['url'] ); ?>"
+                alt="<?php echo esc_attr( $image['alt_text'] ); ?>"
+                width="<?php echo esc_attr( $image['width'] ); ?>"
+                height="<?php echo esc_attr( $image['height'] ); ?>"
+                data-object-fit="cover">
+            </div>
+          <?php endforeach; ?>
+
+        <?php else : ?>
           <div class="swiper-slide">
-            <img
-              src="<?php echo esc_url( $image['url'] ); ?>"
-              alt="<?php echo esc_attr( $image['alt_text'] ); ?>"
-              width="<?php echo esc_attr( $image['width'] ); ?>"
-              height="<?php echo esc_attr( $image['height'] ); ?>"
-              data-object-fit="cover">
+            <?php if ( get_header_image() ) : ?>
+              <img src="<?php header_image(); ?>" data-object-fit="cover">
+            <?php endif; ?>
           </div>
-        <?php endforeach; ?>
+        <?php endif; ?>
+
       </div><!--.swiper-wrapper-->
 
       <div class="swiper-pagination"></div>
