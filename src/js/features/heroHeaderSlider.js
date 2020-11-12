@@ -5,10 +5,10 @@ import 'swiper/swiper-bundle.css';
 export default {
   //初期設定
   init: function() {
-    this.parentElem = document.getElementById('heroHeader');
-    if ( !this.parentElem ) return;
+    this.element = document.querySelector('#heroHeader .swiper-container');
+    if ( !this.element ) return;
 
-    this.swiper = new Swiper( this.parentElem.querySelector('.swiper-container'), {
+    this.swiper = new Swiper( this.element, {
       autoplay: {
         delay: 8000,
         disableOnInteraction: false,
@@ -50,11 +50,17 @@ export default {
       simulateTouch : false,
       speed: 2000,
     } );
+
+    //スライダーが1つ以下の場合、ページネーションを非表示
+    if ( this.swiper.slides.length <= 1 ) {
+      this.swiper.pagination.destroy();
+      this.element.querySelector('.swiper-pagination').style.display = 'none';
+    }
   },
 
   //スライダーの自動再生を開始
   play: function() {
-    if ( !this.parentElem ) return;
+    if ( !this.element ) return;
     this.swiper.autoplay.start();
     this.swiper.slides[0].style.animation = 'zoom-out 10s cubic-bezier(0.5, 1, 0.89, 1) both';
   },
