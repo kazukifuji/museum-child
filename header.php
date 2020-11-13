@@ -20,9 +20,7 @@
     </div><!--.loading-screen-->
 
     <header id="header" class="header">
-      <h4 class="header__logo">
-        <?php get_template_part( 'template_parts/logo' ); ?>
-      </h4>
+      <?php get_template_part( 'template_parts/logo' ); ?>
 
       <?php get_template_part( 'template_parts/hamburger-button' ); ?>
     </header>
