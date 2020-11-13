@@ -7,6 +7,8 @@
       </div><!--.content__fg-->
 
     </div><!--.content-->
+    
+    <?php get_sidebar(); ?>
 
     <?php wp_footer(); ?>
   </body>

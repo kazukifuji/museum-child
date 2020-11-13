@@ -27,8 +27,6 @@
       <?php get_template_part( 'template_parts/hamburger-button' ); ?>
     </header>
 
-    <?php get_sidebar(); ?>
-
     <div class="content">
 
       <div class="content__bg">
