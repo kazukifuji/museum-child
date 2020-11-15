@@ -1,4 +1,65 @@
 .home-page-contents {
   user-select: none;
   width: 100%;
+
+  &__heading {
+    font-size: 3.5rem;
+    margin: 2em 0;
+
+    &.-center { text-align: center; }
+
+    &.-right { text-align: right; }
+
+    &-text {
+      display: inline-block;
+      padding: 0 3em 0 1em;
+      position: relative;
+
+      &::first-letter {
+        font-size: 175%;
+        font-weight: normal;
+        letter-spacing: -10px;
+      }
+
+      &::after {
+        background: $black;
+        content: '';
+        height: 1px;
+        position: absolute;
+        bottom: 1px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+      }
+    }
+
+    &.-center &-text { padding: 0 2em; }
+    &.-right &-text { padding: 0 1em 0 3em; }
+  }
+
+  &__profile {
+    &-avatar {
+      border: 2px solid $gray;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+      overflow: hidden;
+      width: 175px;
+
+      img {
+        display: block;
+        pointer-events: none;
+      }
+    }
+
+    &-name {
+      font-size: 200%;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    &-description {
+      text-align: center;
+    }
+  }
 }
