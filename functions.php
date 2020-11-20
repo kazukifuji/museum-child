@@ -19,6 +19,17 @@ function create_taxonomies() {
     'hierarchical' => true,
     'show_in_rest' => true,
   ] );
+
+  //ブログカテゴリー
+  register_taxonomy( 'blogs-category', 'blogs', [
+    'labels' => [
+      'name' => 'ブログカテゴリー',
+      'all_items' => 'ブログカテゴリー一覧',
+    ],
+    'public' => true,
+    'hierarchical' => true,
+    'show_in_rest' => true,
+  ] );
 }
 
 //カスタム投稿タイプを作成
