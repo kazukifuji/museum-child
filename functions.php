@@ -4,4 +4,26 @@ add_action( 'wp_enqueue_scripts', 'museum_child_enqueue_scripts', 20 );
 function museum_child_enqueue_scripts() {
   wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/dist/css/style.css' );
   wp_enqueue_script( 'child-script', get_stylesheet_directory_uri() . '/dist/js/script.js', [], false, true );
-}  
+}
+
+//カスタム投稿タイプを作成
+add_action( 'init', 'create_post_types' );
+function create_post_types() {
+  //作品
+  register_post_type( 'works', [
+    'labels' => [
+      'name' => '作品',
+      'all_items' => '作品一覧',
+    ],
+    'public' => true,
+    'menu_position' => 5,
+    'menu_icon' => 'dashicons-format-image',
+    'hierarchical' => true,
+    'supports' => [
+      'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks',
+      'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats',
+    ],
+    'has_archive' => true,
+    'show_in_rest' => true,
+  ] );
+}
