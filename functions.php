@@ -6,6 +6,21 @@ function museum_child_enqueue_scripts() {
   wp_enqueue_script( 'child-script', get_stylesheet_directory_uri() . '/dist/js/script.js', [], false, true );
 }
 
+//カスタムタクソノミーを作成
+add_action( 'init', 'create_taxonomies' );
+function create_taxonomies() {
+  //作品カテゴリー
+  register_taxonomy( 'works-category', 'works', [
+    'labels' => [
+      'name' => '作品カテゴリー',
+      'all_items' => '作品カテゴリー一覧',
+    ],
+    'public' => true,
+    'hierarchical' => true,
+    'show_in_rest' => true,
+  ] );
+}
+
 //カスタム投稿タイプを作成
 add_action( 'init', 'create_post_types' );
 function create_post_types() {
