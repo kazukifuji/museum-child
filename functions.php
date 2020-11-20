@@ -41,4 +41,22 @@ function create_post_types() {
     'has_archive' => true,
     'show_in_rest' => true,
   ] );
+
+  //ブログ
+  register_post_type( 'blogs', [
+    'labels' => [
+      'name' => 'ブログ',
+      'all_items' => 'ブログ一覧',
+    ],
+    'public' => true,
+    'menu_position' => 5,
+    'menu_icon' => 'dashicons-edit-large',
+    'hierarchical' => true,
+    'supports' => [
+      'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks',
+      'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats',
+    ],
+    'has_archive' => true,
+    'show_in_rest' => true,
+  ] );
 }
