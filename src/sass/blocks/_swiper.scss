@@ -27,27 +27,33 @@
       .swiper-pagination-bullet {
         background: none;
         border-radius: 0;
-        fill: none;
-        height: 30px;
+        height: auto;
         opacity: 1;
-        width: 30px;
-        -webkit-tap-highlight-color: rgba(gray, 0);
-
-        @include media-query(tc) {
-          height: 35px;
-          width: 35px;
-        }
-
-        path {
+        width: auto;
+        
+        svg {
           fill: white;
           fill-opacity: 0;
+          height: 30px;
           stroke: white;
-          transition: fill-opacity 1s linear;
+          width: 30px;
+          -webkit-tap-highlight-color: rgba(gray, 0);
+  
+          @include media-query(tc) {
+            height: 35px;
+            width: 35px;
+          }
         }
 
-        &-active {
-          path {
-            fill-opacity: 1;
+        &-active svg {
+          animation: bounce 0.4s;
+          fill-opacity: 1;
+
+          @keyframes bounce {
+            0% { transform: scale(0) }
+            70% { transform: scale(1.1) }
+            85% { transform: scale(0.9) }
+            100% { transform: scale(1) }
           }
         }
       }
