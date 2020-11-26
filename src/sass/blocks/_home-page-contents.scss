@@ -138,4 +138,20 @@
       transform: translateX(-50%);
     }
   }
+
+  &__blogs {
+    .home-page-contents__heading-text {
+      &::first-letter {
+        letter-spacing: 0px;
+      }
+    }
+
+    &-more-button {
+      display: inline-block;
+      left: 50%;
+      margin: 40px auto 0;
+      padding: 12px 30px !important;
+      transform: translateX(-50%);
+    }
+  }
 }
