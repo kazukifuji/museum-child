@@ -83,6 +83,10 @@
                     echo $post_title;
                     ?>
                   </h3>
+
+                  <p class="swiper-slide-post-excerpt">
+                    <?php echo get_excerpt_text( $post_id, 70 ); ?>
+                  </p>
                   
                   <a class="swiper-slide-post-link-button button-2 -small" href="<?php echo esc_url( get_permalink( $post_id ) ); ?>">MORE</a>
                 </article>

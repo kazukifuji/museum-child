@@ -113,6 +113,14 @@
             }
           }
 
+          &-excerpt {
+            font-size: 1.2rem;
+
+            @include media-query(sph) {
+              font-size: 1.4rem;
+            }
+          }
+
           &-link-button {
             float: right;
           }
