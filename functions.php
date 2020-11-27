@@ -72,6 +72,13 @@ function create_post_types() {
   ] );
 }
 
+//投稿の抜粋文を取得
+function get_excerpt_text( $post_id = null, $length = 100 ) {
+  $post_obj = get_post( $post_id );
+  $excerpt_text = wp_html_excerpt( strip_shortcodes( $post_obj->post_content ), $length, '...' );
+  return $excerpt_text;
+}
+
 //投稿リストの投稿アイテムを出力
 //※引数「$post_id」を指定しない場合、現在の投稿を取得。
 function custom_the_post_list_item( $post_id = null, $h_tag = 'h2' ) {
