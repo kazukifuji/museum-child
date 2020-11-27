@@ -109,6 +109,56 @@ function museum_child_profile_section( $atts ) {
   return ob_get_clean();
 }
 
+//ホームページコンテンツの作品セクションを表示するショートコード
+add_shortcode( 'works_section', 'museum_child_works_section' );
+function museum_child_works_section( $atts ) {
+  //属性の初期値を設定
+  $atts = shortcode_atts( [ 'post_id_arr' => [] ], $atts, 'works_section' );
+
+  //サブクエリを発行
+  $works_query = new WP_Query( [
+    'post_type' => 'works',
+    'post_status' => 'publish',
+    'post__in' => empty( $atts['post_id_arr'] ) ? [] : explode( ',', $atts['post_id_arr'] ),
+    'posts_per_page' => empty( $atts['post_id_arr'] ) ? 6 : -1,
+    'ignore_sticky_posts' => true,
+  ] );
+  
+  ob_start();
+  ?>
+  
+  <section class="home-page-contents__works">
+    <h2 class="home-page-contents__heading -left">
+      <span class="home-page-contents__heading-text">Works</span>
+    </h2>
+
+    <ul class="home-page-contents__works-list">
+      <?php 
+      //サブループ
+      if ( $works_query->have_posts() ) :
+        while ( $works_query->have_posts() ) : $works_query->the_post();
+          if ( has_post_thumbnail() ) : ?>
+            <li class="home-page-contents__works-list-item">
+              <a class="home-page-contents__works-list-item-link" href="<?php the_permalink(); ?>">
+                <figure class="home-page-contents__works-list-item-featured-media">
+                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+                </figure>
+              </a>
+            </li>
+          <?php endif;
+        endwhile; wp_reset_postdata();
+      endif; ?>
+    </ul>
+
+    <a class="home-page-contents__works-more-button button-1 -large" href="<?php echo esc_url( get_post_type_archive_link( 'works' ) ); ?>">
+      MORE WORKS
+    </a>
+  </section>
+  
+  <?php
+  return ob_get_clean();
+}
+
 //投稿の抜粋文を取得
 function get_excerpt_text( $post_id = null, $length = 100 ) {
   $post_obj = get_post( $post_id );
