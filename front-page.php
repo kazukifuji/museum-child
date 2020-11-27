@@ -105,8 +105,6 @@
       </a>
     </section>
 
-    <div class="home-page-contents__social-media-accounts"></div>
-
   </article><!--.home-page-contents-->
 
 <?php get_footer(); ?>
