@@ -72,6 +72,43 @@ function create_post_types() {
   ] );
 }
 
+//ホームページコンテンツのプロフィールセクションを表示するショートコード
+add_shortcode( 'profile_section', 'museum_child_profile_section' );
+function museum_child_profile_section( $atts ) {
+  //属性の初期値を設定
+  $atts = shortcode_atts( [ 'user_id' => 1 ], $atts, 'profile_section' );
+
+  ob_start();
+  ?>
+
+  <section class="home-page-contents__profile">
+    <h2 class="home-page-contents__heading -center">
+      <span class="home-page-contents__heading-text">Profile</span>
+    </h2>
+    
+    <div class="wrapper">
+      <figure class="home-page-contents__profile-avatar">
+        <?php echo get_avatar( $atts['user_id'], 175 ); ?>
+      </figure>
+
+      <p class="home-page-contents__profile-name">
+        <?php the_author_meta( 'display_name', $atts['user_id'] ); ?>
+      </p>
+
+      <?php
+      $description = esc_html( get_the_author_meta( 'description', $atts['user_id'] ) );
+      if ( $desc !== '' ) : ?>
+        <p class="home-page-contents__profile-description">
+          <?php echo $description; ?>
+        </p>
+      <?php endif; ?>
+    </div><!--.wrapper-->
+  </section>
+
+  <?php
+  return ob_get_clean();
+}
+
 //投稿の抜粋文を取得
 function get_excerpt_text( $post_id = null, $length = 100 ) {
   $post_obj = get_post( $post_id );
