@@ -159,6 +159,77 @@ function museum_child_works_section( $atts ) {
   return ob_get_clean();
 }
 
+//ホームページコンテンツのブログセクションを表示するショートコード
+add_shortcode( 'blogs_section', 'museum_child_blogs_section' );
+function museum_child_blogs_section( $atts ) {
+  //属性の初期値を設定
+  $atts = shortcode_atts( [ 'post_id_arr' => [] ], $atts, 'blogs_section' );
+
+  //サブクエリを発行
+  $blogs_query = new WP_Query( [
+    'post_type' => 'blogs',
+    'post_status' => 'publish',
+    'post__in' => empty( $atts['post_id_arr'] ) ? null : explode( ',', $atts['post_id_arr'] ),
+    'posts_per_page' => empty( $atts['post_id_arr'] ) ? 8 : -1,
+    'ignore_sticky_posts' => true,
+  ] );
+
+  ob_start();
+  ?>
+
+  <section class="home-page-contents__blogs">
+    <h2 class="home-page-contents__heading -right">
+      <span class="home-page-contents__heading-text">Blogs</span>
+    </h2>
+
+    <div class="home-page-contents__blogs-swiper-container swiper-container">
+      <div class="swiper-wrapper">
+        <?php
+        //サブループ
+        if ( $blogs_query->have_posts() ) :
+          while ( $blogs_query->have_posts() ) : $blogs_query->the_post(); ?>
+
+            <div class="swiper-slide">
+              <article class="swiper-slide-post">
+                <?php if ( has_post_thumbnail() ) : ?>
+                  <figure class="swiper-slide-post-thumbnail">
+                    <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+                  </figure>
+                <?php endif; ?>
+
+                <h3 class="swiper-slide-post-title">
+                  <?php
+                  $post_title = esc_html( get_the_title() );
+                  if ( $post_title === '' ) $post_tile = 'No title';
+                  echo $post_title;
+                  ?>
+                </h3>
+
+                <p class="swiper-slide-post-excerpt">
+                  <?php echo get_excerpt_text( null, 70 ); ?>
+                </p>
+                
+                <a class="swiper-slide-post-link-button button-2 -small" href="<?php the_permalink(); ?>">MORE</a>
+              </article>
+            </div>
+
+          <?php endwhile; wp_reset_postdata();
+        endif; ?>
+      </div>
+
+    </div><!--.swiper-container-->
+    
+    <div class="swiper-pagination"></div>
+    
+    <a class="home-page-contents__blogs-more-button button-1 -large" href="<?php echo esc_url( get_post_type_archive_link( 'blogs' ) ); ?>">
+      MORE BLOGS
+    </a>
+  </section>
+
+  <?php
+  return ob_get_clean();
+}
+
 //投稿の抜粋文を取得
 function get_excerpt_text( $post_id = null, $length = 100 ) {
   $post_obj = get_post( $post_id );
