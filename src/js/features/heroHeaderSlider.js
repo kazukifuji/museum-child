@@ -9,6 +9,7 @@ export default {
     if ( !this.element ) return;
 
     this.swiper = new Swiper( this.element, {
+      allowTouchMove: false,
       autoplay: {
         delay: 8000,
         disableOnInteraction: false,
@@ -47,7 +48,6 @@ export default {
                  '</svg></span>';
         },
       },
-      simulateTouch : false,
       speed: 2000,
     } );
 
