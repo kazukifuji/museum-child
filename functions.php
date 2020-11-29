@@ -72,6 +72,22 @@ function create_post_types() {
   ] );
 }
 
+//カスタム投稿のパーマリンクをカスタマイズ
+add_filter( 'post_type_link', 'custom_post_type_link', 1, 2 );
+function custom_post_type_link( $link, $post ) {
+  //works
+  if ( $post->post_type === 'works' ) {
+    return home_url( '/works/' . $post->ID );
+
+  //blogs
+  } elseif ( $post->post_type === 'blogs' ) {
+    return home_url( '/blogs/' . $post->ID );
+
+  } else {
+    return $link;
+  }
+}
+
 //ホームページコンテンツのプロフィールセクションを表示するショートコード
 add_shortcode( 'profile_section', 'museum_child_profile_section' );
 function museum_child_profile_section( $atts ) {
