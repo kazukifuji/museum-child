@@ -88,6 +88,16 @@ function custom_post_type_link( $link, $post ) {
   }
 }
 
+//リトライルールを追加
+add_filter( 'rewrite_rules_array', 'add_rewrite_rules' );
+function add_rewrite_rules( $rules ) {
+  $new_rules = [
+    'works/([0-9]+)/?$' => 'index.php?post_type=works&p=$matches[1]',
+    'blogs/([0-9]+)/?$' => 'index.php?post_type=blogs&p=$matches[1]',
+  ];
+  return $new_rules + $rules;
+}
+
 //ホームページコンテンツのプロフィールセクションを表示するショートコード
 add_shortcode( 'profile_section', 'museum_child_profile_section' );
 function museum_child_profile_section( $atts ) {
