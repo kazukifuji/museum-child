@@ -25,6 +25,7 @@
   "dependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
+    "animejs": "^3.2.1",
     "babel-loader": "^8.1.0",
     "core-js": "^3.6.5",
     "css-loader": "^5.0.0",
