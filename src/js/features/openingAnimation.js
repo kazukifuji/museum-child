@@ -9,6 +9,7 @@ export default {
 
     //ヒーローヘッダー要素
     this.heroHeader = document.getElementById('heroHeader');
+    this.heroHeader.style.pointerEvents = 'none';
 
     //アニメーションに使用される要素
     this.elements = {
@@ -65,6 +66,11 @@ export default {
       delay: anime.stagger( 200 ),
       opacity: 1,
     }, '-=1000');
+
+    //アニメーション終了後、ポインターイベントを有効にする
+    this.timeline.finished.then( () => {
+      this.heroHeader.style.pointerEvents = 'auto';
+    } );
   },
 
   //再生
