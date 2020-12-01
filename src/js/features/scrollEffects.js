@@ -10,6 +10,12 @@ const target = {
   },
 };
 
+/*-----------------------
+ホームページ
+-----------------------*/
+//見出し
+target.add('#homePageContents .home-page-contents__heading');
+
 export default () => {
   //IntersectionObserverのオプション
   const options = {
