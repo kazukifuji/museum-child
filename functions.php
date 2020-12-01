@@ -109,7 +109,9 @@ function museum_child_profile_section( $atts ) {
 
   <section class="home-page-contents__profile">
     <h2 class="home-page-contents__heading -center">
-      <span class="home-page-contents__heading-text">Profile</span>
+      <span class="home-page-contents__heading-text">
+        <span>P</span><span>r</span><span>o</span><span>f</span><span>i</span><span>l</span><span>e</span>
+      </span>
     </h2>
     
     <div class="wrapper">
@@ -155,7 +157,9 @@ function museum_child_works_section( $atts ) {
   
   <section class="home-page-contents__works">
     <h2 class="home-page-contents__heading -left">
-      <span class="home-page-contents__heading-text">Works</span>
+      <span class="home-page-contents__heading-text">
+        <span>W</span><span>o</span><span>r</span><span>k</span><span>s</span>
+      </span>
     </h2>
 
     <ul class="home-page-contents__works-list">
@@ -205,7 +209,9 @@ function museum_child_blogs_section( $atts ) {
 
   <section class="home-page-contents__blogs">
     <h2 class="home-page-contents__heading -right">
-      <span class="home-page-contents__heading-text">Blogs</span>
+      <span class="home-page-contents__heading-text">
+        <span>B</span><span>l</span><span>o</span><span>g</span><span>s</span>
+      </span>
     </h2>
 
     <div class="home-page-contents__blogs-swiper-container swiper-container">

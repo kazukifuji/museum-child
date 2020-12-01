@@ -23,7 +23,7 @@
       padding: 0 3em 0 1em;
       position: relative;
 
-      &::first-letter {
+      span:first-of-type {
         font-size: 175%;
         font-weight: normal;
         letter-spacing: -10px;
@@ -141,7 +141,7 @@
 
   &__blogs {
     .home-page-contents__heading-text {
-      &::first-letter {
+      span:first-child {
         letter-spacing: 0px;
       }
     }
