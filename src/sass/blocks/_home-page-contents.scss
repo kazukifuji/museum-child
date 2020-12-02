@@ -120,6 +120,17 @@
 
     &-description {
       text-align: center;
+
+      &.observe-target {
+        opacity: 0;
+        transform: translateY(50px);
+
+        &.-trigger {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 1s linear, transform 1s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+      }
     }
   }
 
