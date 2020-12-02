@@ -15,6 +15,8 @@ const target = {
 -----------------------*/
 //見出し
 target.add('#homePageContents .home-page-contents__heading');
+//プロフィール画像
+target.add('#homePageContents .home-page-contents__profile-avatar');
 
 export default () => {
   //IntersectionObserverのオプション
