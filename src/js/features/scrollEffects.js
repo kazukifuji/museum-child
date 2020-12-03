@@ -21,6 +21,8 @@ target.add('#homePageContents .home-page-contents__profile-avatar');
 target.add('#homePageContents .home-page-contents__profile-description');
 //投稿リストアイテム
 target.add('#homePageContents .home-page-contents__works-list-item');
+//ブログスライダー
+target.add('#homePageContents .home-page-contents__blogs-swiper-container');
 
 export default () => {
   //IntersectionObserverのオプション
