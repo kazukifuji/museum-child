@@ -19,6 +19,8 @@ target.add('#homePageContents .home-page-contents__heading');
 target.add('#homePageContents .home-page-contents__profile-avatar');
 //プロフィール情報
 target.add('#homePageContents .home-page-contents__profile-description');
+//投稿リストアイテム
+target.add('#homePageContents .home-page-contents__works-list-item');
 
 export default () => {
   //IntersectionObserverのオプション

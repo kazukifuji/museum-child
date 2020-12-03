@@ -142,6 +142,7 @@
       margin: 0;
       list-style: none;
       padding: 0 20px;
+      position: relative;
 
       &-item {
         box-sizing: border-box;
@@ -154,6 +155,33 @@
 
         @include media-query(pc) {
           width: 33.3333%;
+        }
+
+        &.observe-target {
+          transform-origin: right;
+          transform: scaleX(0);
+
+          &::after {
+            background: $gray;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+          }
+
+          &.-trigger {
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scaleX(1);
+            
+            &::after {
+              transform-origin: left;
+              transform: scaleX(0);
+              transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+            }
+          }
         }
 
         &-link {
