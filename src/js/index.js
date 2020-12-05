@@ -19,15 +19,15 @@ heroHeaderSlider.implement();
 //ヒーローヘッダースライダーの自動再生を一旦停止
 heroHeaderSlider.stop();
 
+//ホームページのブログセクションスライダーを実装
+homePageBlogSlider.implement();
+
 window.addEventListener( 'load', () => {
   //スクロールエフェクトを実装
   scrollEffects();
 
   //ヒーローヘッダースライダーの自動再生を再開
   heroHeaderSlider.play();
-
-  //ホームページのブログセクションのスライダーを実装
-  homePageBlogSlider();
 
   //ローディング画面を閉じる
   loadingScreen.close();
