@@ -1,9 +1,9 @@
-import loadingScreen from './features/loadingScreen';
-import openingAnimation from './features/openingAnimation';
 import backgroundAnimation from './features/backgroundAnimation/main';
-import scrollEffects from './features/scrollEffects';
 import heroHeaderSlider from './features/heroHeaderSlider';
 import homePageBlogSlider from './features/homePageBlogSlider';
+import loadingScreen from './features/loadingScreen';
+import openingAnimation from './features/openingAnimation';
+import scrollEffects from './features/scrollEffects';
 
 //ローディング画面の初期設定
 loadingScreen.init();
