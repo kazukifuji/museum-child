@@ -1,16 +1,13 @@
-//ローディング画面を操作
-export default {
-  //初期設定
-  init: function() {
-    //ローディング画面要素
-    this.element = document.getElementById('loadingScreen');
-    //ローディングアニメーション要素
-    this.animationElem = this.element.querySelector('.loader-ellips');
-  },
+//ローディングスクリーン要素
+const loadingScreen = document.getElementById('loadingScreen');
+//ローディングアニメーション要素
+const loadingAnimation = loadingScreen.querySelector('.loader-ellips');
 
-  //ローディング画面を閉じる
-  close: function() {
-    this.element.classList.add('-close');
-    this.animationElem.classList.add('-stop');
-  }
+export default {
+  //ローディングスクリーンを閉じる
+  close: () => {
+    //それぞれの要素にクラスを追加
+    loadingScreen.classList.add('-close');
+    loadingAnimation.classList.add('-stop');
+  },
 }

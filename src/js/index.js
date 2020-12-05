@@ -5,9 +5,6 @@ import loadingScreen from './features/loadingScreen';
 import openingAnimation from './features/openingAnimation';
 import scrollEffects from './features/scrollEffects';
 
-//ローディング画面の初期設定
-loadingScreen.init();
-
 //オープニングアニメーションの初期設定
 openingAnimation.init();
 
@@ -29,7 +26,7 @@ window.addEventListener( 'load', () => {
   //ヒーローヘッダースライダーの自動再生を再開
   heroHeaderSlider.play();
 
-  //ローディング画面を閉じる
+  //ローディングスクリーンを閉じる
   loadingScreen.close();
 
   //オープニングアニメーションを再生
