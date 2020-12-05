@@ -43,29 +43,30 @@ function createLineWaves() {
   return container;
 }
 
-//背景アニメーションを実装
-export default () => {
+export default {
+  //背景アニメーションを実装
+  implement: () => {
+    //ラインウェーブを作成
+    const lineWaves = createLineWaves();
 
-  //ラインウェーブを作成
-  const lineWaves = createLineWaves();
+    //ステージに追加
+    app.stage.addChild( lineWaves );
 
-  //ステージに追加
-  app.stage.addChild( lineWaves );
+    //ループ処理
+    app.ticker.add( () => {
+      const aniObjNum = animationObjects.length;
 
-  //ループ処理
-  app.ticker.add( () => {
-    const aniObjNum = animationObjects.length;
-
-    for ( let i = 0; i < aniObjNum; i++ ) {
-      if ( animationObjects[i].flags.exist ) {
-        if ( animationObjects[i].flags.update ) animationObjects[i].update();
-      } else {
-        animationObjects[i].pixiDisObj.destroy();
-        animationObjects.splice(i, 1);
+      for ( let i = 0; i < aniObjNum; i++ ) {
+        if ( animationObjects[i].flags.exist ) {
+          if ( animationObjects[i].flags.update ) animationObjects[i].update();
+        } else {
+          animationObjects[i].pixiDisObj.destroy();
+          animationObjects.splice(i, 1);
+        }
       }
-    }
-  } );
+    } );
 
-  //アニメーションを開始
-  app.start();
-} 
+    //アニメーションを開始
+    app.start();
+  },
+}

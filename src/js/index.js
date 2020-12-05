@@ -14,10 +14,10 @@ openingAnimation.init();
 //ヒーローヘッダーのスライダー実装する初期設定
 heroHeaderSlider.init();
 
-window.addEventListener( 'load', () => {
-  //背景アニメーションを構築
-  backgroundAnimation();
+//背景アニメーションを実装
+backgroundAnimation.implement();
 
+window.addEventListener( 'load', () => {
   //スクロールエフェクトを実装
   scrollEffects();
 
