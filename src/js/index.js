@@ -1,6 +1,7 @@
 import loadingScreen from './features/loadingScreen';
 import openingAnimation from './features/openingAnimation';
 import backgroundAnimation from './features/backgroundAnimation/main';
+import scrollEffects from './features/scrollEffects';
 import heroHeaderSlider from './features/heroHeaderSlider';
 import homePageBlogSlider from './features/homePageBlogSlider';
 
@@ -16,6 +17,9 @@ heroHeaderSlider.init();
 window.addEventListener( 'load', () => {
   //背景アニメーションを構築
   backgroundAnimation();
+
+  //スクロールエフェクトを実装
+  scrollEffects();
 
   //ヒーローヘッダーのスライダーの自動再生を開始
   heroHeaderSlider.play();

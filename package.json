@@ -33,6 +33,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sass-glob": "^1.1.0",
+    "intersection-observer": "^0.11.0",
     "pixi.js": "^5.3.3",
     "simplex-noise": "^2.4.0",
     "style-loader": "^2.0.0",

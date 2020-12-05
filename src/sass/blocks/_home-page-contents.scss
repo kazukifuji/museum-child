@@ -23,7 +23,7 @@
       padding: 0 3em 0 1em;
       position: relative;
 
-      &::first-letter {
+      span:first-of-type {
         font-size: 175%;
         font-weight: normal;
         letter-spacing: -10px;
@@ -43,6 +43,47 @@
 
     &.-center &-text { padding: 0 2em; }
     &.-right &-text { padding: 0 1em 0 3em; }
+
+    &.observe-target &-text {
+      backface-visibility: hidden;
+
+      &::after {
+        transform: translateX(-50%) rotateY(90deg);
+      }
+      
+      span {
+        display: inline-block;
+        opacity: 0;
+
+        &:nth-of-type(even) { transform: translateY(-100%) rotateY(-180deg) }
+        &:nth-of-type(odd) { transform: translateY(100%) rotateY(180deg) }
+      }
+    }
+
+    &.observe-target.-right &-text {
+      &::after {
+        transform-origin: right;
+      }
+    }
+
+    &.observe-target:not(.-center):not(.-right) &-text {
+      &::after {
+        transform-origin: left;
+      }
+    }
+
+    &.observe-target.-trigger &-text {
+      &::after {
+        transform: translateX(-50%) rotateY(0deg);
+        transition: transform 2s ease-out;
+      }
+
+      span {
+        opacity: 1;
+        transform: translateY(0) rotateY(0);
+        transition: opacity 1s linear, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+    }
   }
 
   &__profile {
@@ -53,6 +94,17 @@
       margin: 0 auto;
       overflow: hidden;
       width: 175px;
+
+      &.observe-target {
+        opacity: 0;
+        transform: scale(1.2);
+
+        &.-trigger {
+          opacity: 1;
+          transform: scale(1);
+          transition: opacity 1s linear, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+      }
 
       img {
         display: block;
@@ -68,6 +120,17 @@
 
     &-description {
       text-align: center;
+
+      &.observe-target {
+        opacity: 0;
+        transform: translateY(50px);
+
+        &.-trigger {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 1s linear, transform 1s cubic-bezier(0.33, 1, 0.68, 1);
+        }
+      }
     }
   }
 
@@ -79,6 +142,7 @@
       margin: 0;
       list-style: none;
       padding: 0 20px;
+      position: relative;
 
       &-item {
         box-sizing: border-box;
@@ -91,6 +155,33 @@
 
         @include media-query(pc) {
           width: 33.3333%;
+        }
+
+        &.observe-target {
+          transform-origin: right;
+          transform: scaleX(0);
+
+          &::after {
+            background: $gray;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+          }
+
+          &.-trigger {
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: scaleX(1);
+            
+            &::after {
+              transform-origin: left;
+              transform: scaleX(0);
+              transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+            }
+          }
         }
 
         &-link {
@@ -141,8 +232,21 @@
 
   &__blogs {
     .home-page-contents__heading-text {
-      &::first-letter {
+      span:first-child {
         letter-spacing: 0px;
+      }
+    }
+
+    &-swiper-container {
+      &.observe-target {
+        opacity: 0;
+        transform: translateY(50px);
+
+        &.-trigger {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 1s linear, transform 1s cubic-bezier(0.33, 1, 0.68, 1);
+        }
       }
     }
 
