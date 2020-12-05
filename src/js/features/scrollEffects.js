@@ -1,5 +1,8 @@
 //スクロール量に応じてDOMのクラスを切り替える機能
 
+//IntersectionObserverポリフィル
+import IntersectionObserverPolyfill from 'intersection-observer';
+
 const target = {
   //機能を適応させる要素（配列）
   elements: [],
