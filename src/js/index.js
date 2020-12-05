@@ -11,17 +11,19 @@ loadingScreen.init();
 //オープニングアニメーションの初期設定
 openingAnimation.init();
 
-//ヒーローヘッダーのスライダー実装する初期設定
-heroHeaderSlider.init();
-
 //背景アニメーションを実装
 backgroundAnimation.implement();
+
+//ヒーローヘッダースライダーを実装
+heroHeaderSlider.implement();
+//ヒーローヘッダースライダーの自動再生を一旦停止
+heroHeaderSlider.stop();
 
 window.addEventListener( 'load', () => {
   //スクロールエフェクトを実装
   scrollEffects();
 
-  //ヒーローヘッダーのスライダーの自動再生を開始
+  //ヒーローヘッダースライダーの自動再生を再開
   heroHeaderSlider.play();
 
   //ホームページのブログセクションのスライダーを実装
