@@ -5,9 +5,6 @@ import loadingScreen from './features/loadingScreen';
 import openingAnimation from './features/openingAnimation';
 import scrollEffects from './features/scrollEffects';
 
-//オープニングアニメーションの初期設定
-openingAnimation.init();
-
 //背景アニメーションを実装
 backgroundAnimation.implement();
 
@@ -29,6 +26,6 @@ window.addEventListener( 'load', () => {
   //ローディングスクリーンを閉じる
   loadingScreen.close();
 
-  //オープニングアニメーションを再生
+  //オープニングアニメーションを開始
   openingAnimation.play();
 }, { once: true } );
