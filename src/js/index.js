@@ -18,7 +18,7 @@ homePageBlogSlider.implement();
 
 window.addEventListener( 'load', () => {
   //スクロールエフェクトを実装
-  scrollEffects();
+  scrollEffects.implement();
 
   //ヒーローヘッダースライダーの自動再生を再開
   heroHeaderSlider.play();
