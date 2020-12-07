@@ -1,35 +1,31 @@
-import loadingScreen from './features/loadingScreen';
-import openingAnimation from './features/openingAnimation';
 import backgroundAnimation from './features/backgroundAnimation/main';
-import scrollEffects from './features/scrollEffects';
 import heroHeaderSlider from './features/heroHeaderSlider';
 import homePageBlogSlider from './features/homePageBlogSlider';
+import loadingScreen from './features/loadingScreen';
+import openingAnimation from './features/openingAnimation';
+import scrollEffects from './features/scrollEffects';
 
-//ローディング画面の初期設定
-loadingScreen.init();
+//背景アニメーションを実装
+backgroundAnimation.implement();
 
-//オープニングアニメーションの初期設定
-openingAnimation.init();
+//ヒーローヘッダースライダーを実装
+heroHeaderSlider.implement();
+//ヒーローヘッダースライダーの自動再生を一旦停止
+heroHeaderSlider.stop();
 
-//ヒーローヘッダーのスライダー実装する初期設定
-heroHeaderSlider.init();
+//ホームページのブログセクションスライダーを実装
+homePageBlogSlider.implement();
 
 window.addEventListener( 'load', () => {
-  //背景アニメーションを構築
-  backgroundAnimation();
-
   //スクロールエフェクトを実装
-  scrollEffects();
+  scrollEffects.implement();
 
-  //ヒーローヘッダーのスライダーの自動再生を開始
+  //ヒーローヘッダースライダーの自動再生を再開
   heroHeaderSlider.play();
 
-  //ホームページのブログセクションのスライダーを実装
-  homePageBlogSlider();
-
-  //ローディング画面を閉じる
+  //ローディングスクリーンを閉じる
   loadingScreen.close();
 
-  //オープニングアニメーションを再生
+  //オープニングアニメーションを開始
   openingAnimation.play();
 }, { once: true } );
