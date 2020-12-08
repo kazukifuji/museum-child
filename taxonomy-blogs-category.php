@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <h1 class="main__heading-1" data-subtitle="- works -">ブログ</h1>
+  <h1 class="main__heading-1" data-subtitle="- blogs -">ブログ</h1>
 
   <div class="wrapper">
     <nav class="categories-nav">
