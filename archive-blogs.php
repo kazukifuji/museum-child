@@ -2,17 +2,9 @@
 
   <h1 class="main__heading-1" data-subtitle="- blogs -">ブログ</h1>
 
-  <section>
-    <div class="wrapper">
-      <h2 class="main__heading-2">ブログ一覧</h2>
-    </div><!--.wrapper-->
-    <?php get_template_part('template_parts/post-list'); ?>
-  </section>
-
-  <section>
-    <h2 class="main__heading-2">ブログカテゴリー</h2>
-    <div class="wrapper">
-      <ul class="category-list">
+  <div class="wrapper">
+    <nav class="categories-nav">
+      <ul class="categories-nav__category-list">
         <?php wp_list_categories( [
           'show_option_all' => '全て',
           'orderby' => 'count',
@@ -21,7 +13,9 @@
           'taxonomy' => 'blogs-category',
         ] ); ?>
       </ul>
-    </div><!--.wrapper-->
-  </section>
+    </nav>
+  </div><!--.wrapper-->
+
+  <?php get_template_part('template_parts/post-list'); ?>
 
 <?php get_footer(); ?>

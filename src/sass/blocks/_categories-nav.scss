@@ -1,0 +1,35 @@
+.categories-nav {
+  &__category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0 0 50px 0;
+    padding: 0;
+    
+    li {
+      border: 0.5px solid $black;
+      border-radius: 3px;
+      margin: 4px;
+  
+      a {
+        color: inherit;
+        display: block;
+        padding: 2px 10px;
+        transition: background 0.2s linear, color 0.2s linear;
+  
+        &:hover, &:focus {
+          background: $black;
+          color: white;
+          outline: none;
+        }
+      }
+  
+      &.current-cat a {
+        background: $black;
+        color: white;
+        pointer-events: none;
+      }
+    }
+  }
+}

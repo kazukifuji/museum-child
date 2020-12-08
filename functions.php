@@ -88,6 +88,17 @@ function custom_post_type_link( $link, $post ) {
   }
 }
 
+//wp_list_categoriesをカスタマイズ
+add_filter( 'wp_list_categories', 'custom_wp_list_categories', 10, 2 );
+function custom_wp_list_categories( $output, $args ) {
+  // 全てのカテゴリーにも、そのページの際にはcurrent-catクラスを適応
+  if ( !strpos( $output, 'current-cat' ) ) {
+    $output = str_replace( 'cat-item-all', 'cat-item-all current-cat', $output );
+  }
+
+  return $output;
+}
+
 //リトライルールを追加
 add_filter( 'rewrite_rules_array', 'add_rewrite_rules' );
 function add_rewrite_rules( $rules ) {

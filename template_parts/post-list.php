@@ -5,11 +5,11 @@
 
       <div class="post-list__posts-sizer"></div>
 
-      <?php custom_the_prev_post_list_items( 'h3' ); ?>
+      <?php custom_the_prev_post_list_items( 'h2' ); ?>
 
       <?php while ( have_posts() ) : the_post(); ?>
         
-        <?php custom_the_post_list_item( $post->ID, 'h3' ); ?>
+        <?php custom_the_post_list_item( $post->ID, 'h2' ); ?>
 
       <?php endwhile; ?>
 
