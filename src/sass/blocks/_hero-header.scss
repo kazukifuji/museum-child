@@ -1,0 +1,17 @@
+.hero-header {
+  &__bg {
+    &::before {
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    &-grid-line-svg {
+      pointer-events: none;
+      z-index: 3;
+    }
+  }
+
+  &__heading {
+    overflow: hidden;
+  }
+}

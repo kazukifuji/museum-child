@@ -1,0 +1,32 @@
+//カラー
+$black: #333;
+$gray: #EEE;
+
+//ブレイクポイント値
+$breakpoint-width: 480px, 896px, 1024px;
+
+//ブレイクポイント
+$breakpoint: (
+  //スマホ横
+  'sph': 'screen and (min-width: #{nth($breakpoint-width, 1)})',
+  //タブレット
+  'tc': 'screen and (min-width: #{nth($breakpoint-width, 2)})',
+  //パソコン
+  'pc': 'screen and (min-width: #{nth($breakpoint-width, 3)})'
+);
+
+//ブレイクポイント（～未満）
+$breakpoint-below: (
+  //スマホ横
+  'sph': 'screen and (max-width: #{nth($breakpoint-width, 1) - 1px})',
+  //タブレット
+  'tc': 'screen and (max-width: #{nth($breakpoint-width, 2) - 1px})',
+  //パソコン
+  'pc': 'screen and (max-width: #{nth($breakpoint-width, 3) - 1px})'
+);
+
+//pc画面以外で表示されるヘッダーの高さ（px単位）
+$header-height : 50px;
+
+//pc画面時に表示されるサイドバーの幅（px単位）
+$sidebar-width : 250px;

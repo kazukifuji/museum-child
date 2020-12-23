@@ -1,0 +1,140 @@
+.hero-header {
+  .swiper-container {
+    height: 100%;
+    width: 100%;
+    z-index: auto;
+
+    .swiper-wrapper {
+      .swiper-slide {
+        img {
+          backface-visibility: hidden;
+          height: 100%;
+          object-fit: cover;
+          pointer-events: none;
+          width: 100%;
+
+          @keyframes zoom-out {
+            0% { transform: scale(1.4) }
+            100% { transform: scale(1) }
+          }
+        }
+      }
+    }
+
+    .swiper-pagination {
+      bottom: 70px;
+      
+      .swiper-pagination-bullet {
+        background: none;
+        border-radius: 0;
+        height: auto;
+        opacity: 1;
+        width: auto;
+        
+        svg {
+          fill: white;
+          fill-opacity: 0;
+          height: 30px;
+          stroke: white;
+          width: 30px;
+          -webkit-tap-highlight-color: rgba(gray, 0);
+  
+          @include media-query(tc) {
+            height: 35px;
+            width: 35px;
+          }
+        }
+
+        &-active svg {
+          animation: bounce 0.4s;
+          fill-opacity: 1;
+
+          @keyframes bounce {
+            0% { transform: scale(0) }
+            70% { transform: scale(1.1) }
+            85% { transform: scale(0.9) }
+            100% { transform: scale(1) }
+          }
+        }
+      }
+    }
+  }
+}
+
+.home-page-contents {
+  .swiper-container {
+    overflow: inherit;
+
+    .swiper-wrapper {
+      .swiper-slide {
+        box-shadow: 0 0 10px rgba(gray, 0.2);
+        box-sizing: border-box;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 20px;
+
+        @include media-query(tc) {
+          padding: 30px;
+        }
+
+        &-post {
+          &::after {
+            clear: both;
+            content: '';
+            display: block;
+          }
+
+          &-thumbnail {
+            margin: 0;
+            position: relative;
+            width: 100%;
+
+            &::before {
+              content: '';
+              display: block;
+              padding-top: 62%;
+            }
+
+            img {
+              height: 100%;
+              object-fit: cover;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+            }
+          }
+
+          &-title {
+            font-size: 1.3rem;
+
+            @include media-query(sph) {
+              font-size: 1.5rem;
+            }
+          }
+
+          &-excerpt {
+            font-size: 1.2rem;
+
+            @include media-query(sph) {
+              font-size: 1.4rem;
+            }
+          }
+
+          &-link-button {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+
+  .swiper-pagination {
+    margin: 20px 0;
+    position: relative;
+
+    &-bullet {
+      margin: 0 4px;
+    }
+  }
+}
