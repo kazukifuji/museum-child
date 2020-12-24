@@ -138,7 +138,7 @@ function museum_child_profile_section( $atts ) {
       </p>
 
       <?php
-      $description = esc_html( get_the_author_meta( 'description', $atts['user_id'] ) );
+      $description = get_the_author_meta( 'description', $atts['user_id'] );
       if ( $description !== '' ) : ?>
         <p class="home-page-contents__profile-description">
           <?php echo $description; ?>
