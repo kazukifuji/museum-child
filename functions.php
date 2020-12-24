@@ -109,6 +109,9 @@ function add_rewrite_rules( $rules ) {
   return $new_rules + $rules;
 }
 
+//WordPressのプロフィール欄でHTMLコードを使用する
+remove_filter( 'pre_user_description', 'wp_filter_kses' );
+
 //ホームページコンテンツのプロフィールセクションを表示するショートコード
 add_shortcode( 'profile_section', 'museum_child_profile_section' );
 function museum_child_profile_section( $atts ) {
