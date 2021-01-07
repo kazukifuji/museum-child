@@ -1,6 +1,6 @@
 {
   "name": "museum-child",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Child theme of the WordPress theme 「museum」",
   "main": "index.js",
   "scripts": {
