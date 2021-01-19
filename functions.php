@@ -44,7 +44,7 @@ function create_post_types() {
     'public' => true,
     'menu_position' => 5,
     'menu_icon' => 'dashicons-format-image',
-    'hierarchical' => true,
+    'hierarchical' => false,
     'supports' => [
       'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks',
       'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats',
@@ -62,7 +62,7 @@ function create_post_types() {
     'public' => true,
     'menu_position' => 5,
     'menu_icon' => 'dashicons-edit-large',
-    'hierarchical' => true,
+    'hierarchical' => false,
     'supports' => [
       'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks',
       'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats',
