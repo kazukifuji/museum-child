@@ -132,6 +132,14 @@
         }
       }
     }
+
+    &-more-button {
+      display: inline-block;
+      left: 50%;
+      margin: 40px auto 0;
+      padding: 12px 30px !important;
+      transform: translateX(-50%);
+    }
   }
 
   &__works {
