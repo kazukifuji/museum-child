@@ -21,9 +21,7 @@
 
         <?php else : ?>
           <div class="swiper-slide">
-            <?php if ( get_header_image() ) : ?>
-              <img src="<?php header_image(); ?>" data-object-fit="cover">
-            <?php endif; ?>
+            <img src="<?php echo esc_url( get_theme_support( 'custom-header', 'default-image' ) ); ?>" data-object-fit="cover">
           </div>
         <?php endif; ?>
 

@@ -1,6 +1,6 @@
 {
   "name": "museum-child",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Child theme of the WordPress theme 「museum」",
   "main": "index.js",
   "scripts": {
@@ -23,22 +23,22 @@
     "IE 11"
   ],
   "dependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "animejs": "^3.2.1",
-    "babel-loader": "^8.1.0",
-    "core-js": "^3.6.5",
-    "css-loader": "^5.0.0",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.8.2",
+    "css-loader": "^5.0.1",
     "gulp": "^4.0.2",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-sass-glob": "^1.1.0",
-    "intersection-observer": "^0.11.0",
-    "pixi.js": "^5.3.3",
+    "intersection-observer": "^0.12.0",
+    "pixi.js": "^5.3.7",
     "simplex-noise": "^2.4.0",
     "style-loader": "^2.0.0",
     "swiper": "^4.5.1",
-    "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0"
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
   }
 }

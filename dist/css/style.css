@@ -213,6 +213,14 @@
   transition: opacity 1s linear, transform 1s cubic-bezier(0.33, 1, 0.68, 1);
 }
 
+.home-page-contents__profile-more-button {
+  display: inline-block;
+  left: 50%;
+  margin: 40px auto 0;
+  padding: 12px 30px !important;
+  transform: translateX(-50%);
+}
+
 .home-page-contents__works-list {
   display: flex;
   flex-flow: row wrap;
@@ -537,4 +545,30 @@
 
 .home-page-contents .swiper-pagination-bullet {
   margin: 0 4px;
+}
+
+.wpcf7-form .flex-container {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0;
+}
+
+@media screen and (min-width: 480px) {
+  .wpcf7-form .flex-container {
+    align-items: center;
+    flex-direction: row;
+  }
+  .wpcf7-form .flex-container label {
+    flex: 0 0 150px;
+    margin: 0 2em 0 0;
+    text-align: right;
+  }
+}
+
+.wpcf7-form .flex-container .wpcf7-form-control-wrap {
+  flex: 1 1 100%;
+}
+
+.wpcf7-form .submit-container {
+  text-align: center;
 }

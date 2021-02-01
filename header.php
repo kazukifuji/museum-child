@@ -25,7 +25,7 @@
       <?php get_template_part( 'template_parts/hamburger-button' ); ?>
     </header>
 
-    <div class="content">
+    <div id="content" class="content">
 
       <div class="content__bg">
         <div id="backgroundCanvasWrap" class="content__bg-canvas-wrap">
