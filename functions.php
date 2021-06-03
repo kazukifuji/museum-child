@@ -222,7 +222,7 @@ function museum_child_works_section( $atts ) {
             <li class="home-page-contents__works-list-item">
               <a class="home-page-contents__works-list-item-link" href="<?php the_permalink(); ?>">
                 <figure class="home-page-contents__works-list-item-featured-media">
-                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'contain' ] ); ?>
                 </figure>
               </a>
             </li>

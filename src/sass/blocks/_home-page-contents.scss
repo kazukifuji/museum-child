@@ -147,22 +147,22 @@
       display: flex;
       flex-flow: row wrap;
       justify-content: center;
-      margin: 0;
+      margin: 0 20px;
       list-style: none;
-      padding: 0 20px;
+      padding: 0;
       position: relative;
 
       &-item {
         box-sizing: border-box;
-        padding: 20px;
-        width: 100%;
+        margin: 20px;
+        width: calc( 100% - 40px );
 
         @include media-query(sph) {
-          width: 50%;
+          width: calc( 50% - 40px );
         }
 
         @include media-query(pc) {
-          width: 33.3333%;
+          width: calc( 33.3333% - 40px );
         }
 
         &.observe-target {
@@ -181,13 +181,13 @@
           }
 
           &.-trigger {
-            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             transform: scaleX(1);
             
             &::after {
               transform-origin: left;
               transform: scaleX(0);
-              transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+              transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
             }
           }
         }
@@ -199,9 +199,11 @@
         }
 
         &-featured-media {
+          background: $gray;
           margin: 0;
           overflow: hidden;
           position: relative;
+          transition: background 0.5s;
           width: 100%;
 
           &::before {
@@ -212,7 +214,7 @@
           
           img {
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             pointer-events: none;
             position: absolute;
             top: 0;
@@ -224,36 +226,8 @@
 
         &-link:hover &-featured-media,
         &-link:focus &-featured-media {
+          background: $black;
           img { transform: scale(1.1) }
-        }
-      }
-    }
-
-    &-more-button {
-      display: inline-block;
-      left: 50%;
-      margin: 40px auto 0;
-      padding: 12px 30px !important;
-      transform: translateX(-50%);
-    }
-  }
-
-  &__blogs {
-    .home-page-contents__heading-text {
-      span:first-child {
-        letter-spacing: 0px;
-      }
-    }
-
-    &-swiper-container {
-      &.observe-target {
-        opacity: 0;
-        transform: translateY(50px);
-
-        &.-trigger {
-          opacity: 1;
-          transform: translateY(0);
-          transition: opacity 1s linear, transform 1s cubic-bezier(0.33, 1, 0.68, 1);
         }
       }
     }
