@@ -1,3 +1,5 @@
+import 'src/sass/index.scss';
+
 import backgroundAnimation from './features/backgroundAnimation/main';
 import heroHeaderSlider from './features/heroHeaderSlider';
 import homePageBlogSlider from './features/homePageBlogSlider';
