@@ -150,7 +150,7 @@ function museum_child_profile_section( $atts ) {
   ?>
 
   <section class="home-page-contents__profile">
-    <h2 class="home-page-contents__heading -center">
+    <h2 class="home-page-contents__heading -left">
       <span class="home-page-contents__heading-text">
         <span>P</span><span>r</span><span>o</span><span>f</span><span>i</span><span>l</span><span>e</span>
       </span>
@@ -207,7 +207,7 @@ function museum_child_works_section( $atts ) {
   ?>
   
   <section class="home-page-contents__works">
-    <h2 class="home-page-contents__heading -left">
+    <h2 class="home-page-contents__heading -right">
       <span class="home-page-contents__heading-text">
         <span>W</span><span>o</span><span>r</span><span>k</span><span>s</span>
       </span>
@@ -222,7 +222,7 @@ function museum_child_works_section( $atts ) {
             <li class="home-page-contents__works-list-item">
               <a class="home-page-contents__works-list-item-link" href="<?php the_permalink(); ?>">
                 <figure class="home-page-contents__works-list-item-featured-media">
-                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'contain' ] ); ?>
                 </figure>
               </a>
             </li>
