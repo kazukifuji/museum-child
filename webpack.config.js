@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve( __dirname, 'dist/' ),
-    filename: 'js/main.js',
+    filename: 'js/script.js',
   },
   resolve: {
     modules: [ __dirname, 'node_modules' ]
