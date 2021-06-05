@@ -260,7 +260,7 @@ function custom_the_post_list_item( $post_id = null, $h_tag = 'h2' ) {
     
       <?php if ( has_post_thumbnail( $post_obj->ID ) ) : ?>
         <figure class="post-item__featured-media">
-          <?php echo get_the_post_thumbnail( $post_obj->ID, 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+          <?php echo get_the_post_thumbnail( $post_obj->ID, 'post-thumbnail' ); ?>
         </figure><!--post-item__featured-media-->
       <?php endif; ?>
 
