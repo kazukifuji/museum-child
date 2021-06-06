@@ -11,7 +11,7 @@
 
           <?php if ( has_post_thumbnail() ) : ?>
             <figure class="post-single__featured-media">
-              <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+              <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'contain' ] ); ?>
             </figure>
           <?php endif; ?>
 

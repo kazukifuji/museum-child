@@ -19,17 +19,6 @@ function create_taxonomies() {
     'hierarchical' => true,
     'show_in_rest' => true,
   ] );
-
-  //ブログカテゴリー
-  register_taxonomy( 'blogs-category', 'blogs', [
-    'labels' => [
-      'name' => 'ブログカテゴリー',
-      'all_items' => 'ブログカテゴリー一覧',
-    ],
-    'public' => true,
-    'hierarchical' => true,
-    'show_in_rest' => true,
-  ] );
 }
 
 //カスタム投稿タイプを作成
@@ -52,24 +41,6 @@ function create_post_types() {
     'has_archive' => true,
     'show_in_rest' => true,
   ] );
-
-  //ブログ
-  register_post_type( 'blogs', [
-    'labels' => [
-      'name' => 'ブログ',
-      'all_items' => 'ブログ一覧',
-    ],
-    'public' => true,
-    'menu_position' => 5,
-    'menu_icon' => 'dashicons-edit-large',
-    'hierarchical' => false,
-    'supports' => [
-      'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks',
-      'custom-fields', 'comments', 'revisions', 'page-attributes', 'post-formats',
-    ],
-    'has_archive' => true,
-    'show_in_rest' => true,
-  ] );
 }
 
 //カスタム投稿のパーマリンクをカスタマイズ
@@ -78,10 +49,6 @@ function custom_post_type_link( $link, $post ) {
   //works
   if ( $post->post_type === 'works' ) {
     return home_url( '/works/' . $post->ID );
-
-  //blogs
-  } elseif ( $post->post_type === 'blogs' ) {
-    return home_url( '/blogs/' . $post->ID );
 
   } else {
     return $link;
@@ -104,7 +71,6 @@ add_filter( 'rewrite_rules_array', 'add_rewrite_rules' );
 function add_rewrite_rules( $rules ) {
   $new_rules = [
     'works/([0-9]+)/?$' => 'index.php?post_type=works&p=$matches[1]',
-    'blogs/([0-9]+)/?$' => 'index.php?post_type=blogs&p=$matches[1]',
   ];
   return $new_rules + $rules;
 }
@@ -184,7 +150,7 @@ function museum_child_profile_section( $atts ) {
   ?>
 
   <section class="home-page-contents__profile">
-    <h2 class="home-page-contents__heading -center">
+    <h2 class="home-page-contents__heading -left">
       <span class="home-page-contents__heading-text">
         <span>P</span><span>r</span><span>o</span><span>f</span><span>i</span><span>l</span><span>e</span>
       </span>
@@ -241,7 +207,7 @@ function museum_child_works_section( $atts ) {
   ?>
   
   <section class="home-page-contents__works">
-    <h2 class="home-page-contents__heading -left">
+    <h2 class="home-page-contents__heading -right">
       <span class="home-page-contents__heading-text">
         <span>W</span><span>o</span><span>r</span><span>k</span><span>s</span>
       </span>
@@ -256,7 +222,7 @@ function museum_child_works_section( $atts ) {
             <li class="home-page-contents__works-list-item">
               <a class="home-page-contents__works-list-item-link" href="<?php the_permalink(); ?>">
                 <figure class="home-page-contents__works-list-item-featured-media">
-                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'contain' ] ); ?>
                 </figure>
               </a>
             </li>
@@ -270,79 +236,6 @@ function museum_child_works_section( $atts ) {
     </a>
   </section>
   
-  <?php
-  return ob_get_clean();
-}
-
-//ホームページコンテンツのブログセクションを表示するショートコード
-add_shortcode( 'blogs_section', 'museum_child_blogs_section' );
-function museum_child_blogs_section( $atts ) {
-  //属性の初期値を設定
-  $atts = shortcode_atts( [ 'post_id_arr' => [] ], $atts, 'blogs_section' );
-
-  //サブクエリを発行
-  $blogs_query = new WP_Query( [
-    'post_type' => 'blogs',
-    'post_status' => 'publish',
-    'post__in' => empty( $atts['post_id_arr'] ) ? null : explode( ',', $atts['post_id_arr'] ),
-    'posts_per_page' => empty( $atts['post_id_arr'] ) ? 8 : -1,
-    'ignore_sticky_posts' => true,
-  ] );
-
-  ob_start();
-  ?>
-
-  <section class="home-page-contents__blogs">
-    <h2 class="home-page-contents__heading -right">
-      <span class="home-page-contents__heading-text">
-        <span>B</span><span>l</span><span>o</span><span>g</span><span>s</span>
-      </span>
-    </h2>
-
-    <div class="home-page-contents__blogs-swiper-container swiper-container">
-      <div class="swiper-wrapper">
-        <?php
-        //サブループ
-        if ( $blogs_query->have_posts() ) :
-          while ( $blogs_query->have_posts() ) : $blogs_query->the_post(); ?>
-
-            <div class="swiper-slide">
-              <article class="swiper-slide-post">
-                <?php if ( has_post_thumbnail() ) : ?>
-                  <figure class="swiper-slide-post-thumbnail">
-                    <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
-                  </figure>
-                <?php endif; ?>
-
-                <h3 class="swiper-slide-post-title">
-                  <?php
-                  $post_title = esc_html( get_the_title() );
-                  if ( $post_title === '' ) $post_tile = 'No title';
-                  echo $post_title;
-                  ?>
-                </h3>
-
-                <p class="swiper-slide-post-excerpt">
-                  <?php echo get_excerpt_text( null, 70 ); ?>
-                </p>
-                
-                <a class="swiper-slide-post-link-button button-2 -small" href="<?php the_permalink(); ?>">MORE</a>
-              </article>
-            </div>
-
-          <?php endwhile; wp_reset_postdata();
-        endif; ?>
-      </div>
-
-    </div><!--.swiper-container-->
-    
-    <div class="swiper-pagination"></div>
-    
-    <a class="home-page-contents__blogs-more-button button-1 -large" href="<?php echo esc_url( get_post_type_archive_link( 'blogs' ) ); ?>">
-      MORE BLOGS
-    </a>
-  </section>
-
   <?php
   return ob_get_clean();
 }
@@ -367,7 +260,7 @@ function custom_the_post_list_item( $post_id = null, $h_tag = 'h2' ) {
     
       <?php if ( has_post_thumbnail( $post_obj->ID ) ) : ?>
         <figure class="post-item__featured-media">
-          <?php echo get_the_post_thumbnail( $post_obj->ID, 'post-thumbnail', [ 'data-object-fit' => 'cover' ] ); ?>
+          <?php echo get_the_post_thumbnail( $post_obj->ID, 'post-thumbnail' ); ?>
         </figure><!--post-item__featured-media-->
       <?php endif; ?>
 

@@ -1,21 +1,64 @@
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
-  entry: './src/js/index.js',
+  entry: {
+    main: path.resolve( __dirname, 'src/js/index.js' ),
+  },
   output: {
-    filename: 'script.js',
-    path: __dirname + '/dist/js'
+    path: path.resolve( __dirname, 'dist/' ),
+    filename: 'js/script.js',
+  },
+  resolve: {
+    modules: [ __dirname, 'node_modules' ]
   },
   cache: true,
   watch: false,
   watchOptions: {
-    ignored: [ '/node_modules/**', '/dist/**' ]
+    ignored: [ './node_modules/**', './dist/**' ]
   },
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'autoprefixer',
+                ],
+              },
+            },
+          },
+          'sass-loader',
+          'import-glob-loader'
+        ]
+      },
+
+      {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: path.resolve( __dirname, 'node_modules/' ),
         use: {
           loader: 'babel-loader',
           options: {
@@ -32,17 +75,12 @@ module.exports = {
           }
         }
       },
-      
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { url: false }
-          }
-        ]
-      }
     ],
-  }
+  },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/style.css',
+    })
+  ],
 };

@@ -1,6 +1,7 @@
+import 'src/sass/index.scss';
+
 import backgroundAnimation from './features/backgroundAnimation/main';
 import heroHeaderSlider from './features/heroHeaderSlider';
-import homePageBlogSlider from './features/homePageBlogSlider';
 import loadingScreen from './features/loadingScreen';
 import openingAnimation from './features/openingAnimation';
 import scrollEffects from './features/scrollEffects';
@@ -12,9 +13,6 @@ backgroundAnimation.implement();
 heroHeaderSlider.implement();
 //ヒーローヘッダースライダーの自動再生を一旦停止
 heroHeaderSlider.stop();
-
-//ホームページのブログセクションスライダーを実装
-homePageBlogSlider.implement();
 
 window.addEventListener( 'load', () => {
   //スクロールエフェクトを実装
