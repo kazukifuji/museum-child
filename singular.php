@@ -11,7 +11,11 @@
 
           <?php if ( has_post_thumbnail() ) : ?>
             <figure class="post-single__featured-media">
-              <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'contain' ] ); ?>
+              <?php the_post_thumbnail(
+                'post-thumbnail',
+                [ 'data-object-fit' => 'contain',
+                  'sizes' => '(max-width: 479px) 100vw, (max-width: 1023px) calc(100vw - 10vw), calc(100vw - 10vw - 250px)' ] );
+              ?>
             </figure>
           <?php endif; ?>
 
