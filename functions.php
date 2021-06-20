@@ -222,7 +222,11 @@ function museum_child_works_section( $atts ) {
             <li class="home-page-contents__works-list-item">
               <a class="home-page-contents__works-list-item-link" href="<?php the_permalink(); ?>">
                 <figure class="home-page-contents__works-list-item-featured-media">
-                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'contain' ] ); ?>
+                  <?php the_post_thumbnail(
+                    'post-thumbnail',
+                    [ 'data-object-fit' => 'contain',
+                      'sizes' => '(max-width: 479px) calc(100vw - 80px), (max-width: 1023px) calc(50vw - 60px), calc((100vw - 250px) / 3 - 60px)' ] );
+                  ?>
                 </figure>
               </a>
             </li>
@@ -260,7 +264,11 @@ function custom_the_post_list_item( $post_id = null, $h_tag = 'h2' ) {
     
       <?php if ( has_post_thumbnail( $post_obj->ID ) ) : ?>
         <figure class="post-item__featured-media">
-          <?php echo get_the_post_thumbnail( $post_obj->ID, 'post-thumbnail' ); ?>
+          <?php echo get_the_post_thumbnail(
+            $post_obj->ID,
+            'post-thumbnail',
+            [ 'sizes' => '(max-width: 479px) 100vw, (max-width: 1023px) 50vw, calc((100vw - 250px) / 3)' ] );
+          ?>
         </figure><!--post-item__featured-media-->
       <?php endif; ?>
 
