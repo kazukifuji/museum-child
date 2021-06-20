@@ -222,7 +222,11 @@ function museum_child_works_section( $atts ) {
             <li class="home-page-contents__works-list-item">
               <a class="home-page-contents__works-list-item-link" href="<?php the_permalink(); ?>">
                 <figure class="home-page-contents__works-list-item-featured-media">
-                  <?php the_post_thumbnail( 'post-thumbnail', [ 'data-object-fit' => 'contain' ] ); ?>
+                  <?php the_post_thumbnail(
+                    'post-thumbnail',
+                    [ 'data-object-fit' => 'contain',
+                      'sizes' => '(max-width: 479px) calc(100vw - 80px), (max-width: 1023px) calc(50vw - 60px), calc((100vw - 250px) / 3 - 60px)' ] );
+                  ?>
                 </figure>
               </a>
             </li>
