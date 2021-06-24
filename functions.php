@@ -176,7 +176,7 @@ function museum_child_profile_section( $atts ) {
 
     <?php
     $protocol = is_ssl() ? 'https' : 'http';
-    $profile_link = esc_url( get_home_url( null, '', $protocol ) . '/profile/' );
+    $profile_link = esc_url( get_home_url( null, '', $protocol ) . '/profiles/' );
     ?>
 
     <a class="home-page-contents__profile-more-button button-1 -large" href="<?php echo $profile_link; ?>">
